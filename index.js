@@ -5,21 +5,11 @@ const images = {
   leafs: '🍃'
 };
 
-const trees = document.querySelectorAll('.tree');
+const forest = document.querySelector('.entry');
 
-trees.forEach(tree => {
-  tree.addEventListener('mouseover', () => {
-    if (tree.classList.contains('treasure')) {
-      tree.innerHTML = images.treasure;
-      goal();
-    } else tree.innerHTML = images.leafs;
-  });
+forest.addEventListener('mouseover', event => {
+  if (event.target.className.includes('treasure')) {
+    event.target.innerHTML = images.treasure;
+    return alert('Congratulations you win');
+  } else event.target.innerHTML = images.leafs;
 });
-
-const goal = () => {
-  const div = document.createElement('div');
-  div.innerHTML = `Gratulacje! Znalazłeś skarb ${images.treasure}`;
-  div.style.fontSize = '24px';
-  div.style.fontFamily = 'Lato';
-  document.body.appendChild(div);
-};
